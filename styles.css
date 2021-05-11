@@ -1,0 +1,89 @@
+.body_all {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.body_all .header_all {
+    background-color: #ffa200;
+    height: 70px;
+    align-items: center;
+    display: flex;
+}
+
+.body_all .header_all .header-logo {
+    justify-content: flex-end;
+}
+
+.body_all .header_all .header-logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+.body_all .header_all .header-logo h4 {
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.body_all .header_all .header-menu {
+    line-height: 70px;
+    height: 70px;
+}
+
+.body_all .header_all .header-menu .menu li {
+    list-style: none;
+    padding: 0 25px;
+    font-weight: 500;
+}
+
+.body_all .header_all .header-menu .menu li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.body_all .header_all .header-search form {
+    display: flex;
+}
+
+.body_all .header_all .header-search input {
+    height: 40px;
+    width: 400px;
+    border-radius: 15px;
+    margin-right: -100px;
+}
+
+.body_all .header_all .header-search button {
+    height: 40px;
+    border-radius: 15px;
+    background-color: #3b5995;
+    width: 100px;
+    color: #fff;
+}
+
+.body_all .header_all .header-icon {
+    display: flex;
+    line-height: 70px;
+    height: 70px;
+    align-items: center;
+}
+
+.body_all .header_all .header-icon h6 {
+    line-height: 70px;
+    height: 70px;
+    margin: 10px;
+}
+
+.body_all .header_all .header-icon span {
+    padding: 10px;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.body_all .header_all .header-icon span:hover {
+    color: #d2d17e;
+    transition: 0.4s;
+}
