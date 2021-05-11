@@ -1,4 +1,5 @@
 <?php 
+//function kết nối với SQL và lấy data ra từ bảng logo để có được giá trị của mảng
  function getLogo(){
     $connect = connectSQL();
     $sql = "SELECT logo, title FROM logo";

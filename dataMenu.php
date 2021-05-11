@@ -1,5 +1,5 @@
 <?php
-//  include 'connectSQL.php';
+//function kết nối với SQL và lấy data ra từ bảng menu để có được giá trị của mảng
  function getMenu(){
     $connect = connectSQL();
     $sql = "SELECT * FROM menu WHERE del < 1 ORDER BY rank ASC";

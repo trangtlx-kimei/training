@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 04:19 AM
+-- Generation Time: May 11, 2021 at 08:17 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `webphp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `url_img` varchar(50) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `rank` varchar(50) DEFAULT NULL,
+  `create_date` varchar(50) DEFAULT NULL,
+  `update_date` varchar(50) DEFAULT NULL,
+  `del` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`id`, `name`, `url_img`, `description`, `rank`, `create_date`, `update_date`, `del`) VALUES
+(1, 'banner 1', 'banner1.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '1', '11-05', '11-05', '0'),
+(2, 'banner 2', 'banner2.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '2', '11-05', '11-05', '0'),
+(3, 'banner 3', 'banner3.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '3', '11-05', '11-05', '0'),
+(4, 'banner 4', 'banner4.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '4', '11-05', '11-05', '0');
 
 -- --------------------------------------------------------
 
@@ -69,6 +96,12 @@ INSERT INTO `menu` (`id`, `name`, `rank`, `del`) VALUES
 --
 
 --
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `logo`
 --
 ALTER TABLE `logo`
@@ -83,6 +116,12 @@ ALTER TABLE `menu`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `logo`
