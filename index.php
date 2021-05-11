@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Fruits Web</title>
     <!-- Required meta tags -->
@@ -21,17 +22,17 @@
     <link rel="stylesheet" href="bannerStyles.css">
 </head>
 <?php 
-  include 'connectSQL.php';
-  include 'dataLogo.php';
-  include 'dataMenu.php';
-  include 'dataBanner.php';
+  include_once 'connectSQL.php';
+  include_once 'dataLogo.php';
+  include_once 'dataMenu.php';
+  include_once 'dataBanner.php';
   $getLogo = getLogo();
   $getMenu = getMenu();  
   $getBanner = getBanner();
   ?>
 
 <body>
-  <!-- header-->
+    <!-- header-->
     <div class="container-fluid">
         <div class="row">
             <div class="body_all">
@@ -43,11 +44,12 @@
                     <div class="col-4 header-menu">
                         <nav>
                             <ul class="menu d-flex">
-                                <li><a href="#"><?php echo $getMenu[0]['name'] ?></a></li>
-                                <li><a href="#"><?php echo $getMenu[1]['name'] ?></a></li>
-                                <li><a href="#"><?php echo $getMenu[2]['name'] ?></a></li>
-                                <li><a href="#"><?php echo $getMenu[3]['name'] ?></a></li>
-                                <li><a href="#"><?php echo $getMenu[4]['name'] ?></a></li>
+                                <?php 
+                                            for($i = 0; $i < count($getMenu) ; $i++)
+                                            {
+                                                echo "<li>" ."<a href='#'>". $getMenu[$i]['name'] ."</a>" . "</li>" ;
+                                            }
+                                        ?>
                             </ul>
                         </nav>
                     </div>
@@ -78,41 +80,22 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
             </ol>
-
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="./img/<?php echo $getBanner[0]['url_img']?>" class="banner_size" alt="banner1">
-                    <div class="carousel-caption">
-                        <h3><?php echo $getBanner[0]['name']?></h3>
-                        <p><?php echo $getBanner[0]['description']?></p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="./img/<?php echo $getBanner[1]['url_img']?>" class="banner_size" alt="banner1">
-                    <div class="carousel-caption">
-                        <h3><?php echo $getBanner[1]['name']?></h3>
-                        <p><?php echo $getBanner[1]['description']?></p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="./img/<?php echo $getBanner[2]['url_img']?>" class="banner_size" alt="banner1">
-                    <div class="carousel-caption">
-                        <h3><?php echo $getBanner[2]['name']?></h3>
-                        <p><?php echo $getBanner[2]['description']?></p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="./img/<?php echo $getBanner[3]['url_img']?>" class="banner_size" alt="banner1">
-                    <div class="carousel-caption">
-                        <h3><?php echo $getBanner[3]['name']?></h3>
-                        <p><?php echo $getBanner[3]['description']?></p>
-                    </div>
-                </div>
+            <div class="carousel-inner khoa">
+            <?php 
+                    for($i = 0; $i < count($getBanner) ; $i++) {
+                      ?>
+                        <div class="item <?php if ($i == 0) { echo 'active'; } ?>">
+                          <img src="img/<?php echo $getBanner[$i]['url_img'] ?>" class="banner_size" alt="banner1">
+                          <div class="carousel-caption">
+                          <h3><?php echo $getBanner[$i]['name'] ?></h3>
+                          <p><?php echo $getBanner[$i]['description']  ?><p>
+                          </div>
+                        </div>
+                      <?php
+                    }
+            ?>
             </div>
-
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -126,4 +109,5 @@
         </div>
     </div>
 </body>
+
 </html>
