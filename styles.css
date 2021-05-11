@@ -26,6 +26,7 @@
     padding: 10px 20px;
     color: #fff;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .body_all .header_all .header-menu {
@@ -83,6 +84,6 @@
 }
 
 .body_all .header_all .header-icon span:hover {
-    color: #f8837c;
+    color: #d2d17e;
     transition: 0.4s;
 }

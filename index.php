@@ -11,8 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.2">
-  
+    <link rel="stylesheet" href="styles.css?v=1.0">
   </head>
   <?php 
   include 'connectSQL.php';
@@ -20,8 +19,6 @@
   include 'dataMenu.php';
   $getLogo = getLogo();
   $getMenu = getMenu();   
-  // echo '<pre>';
-  // print_r($getMenu);
   ?> 
   <body>
   <div class="container-fluid">
