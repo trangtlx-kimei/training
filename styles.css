@@ -1,3 +1,9 @@
+body {
+    background-color: #fee9d8;
+    padding: 0;
+    margin: 0;
+}
+
 .body_all {
     height: 100%;
     width: 100%;
@@ -29,6 +35,11 @@
     cursor: pointer;
 }
 
+.body_all .header_all .header-logo h4 a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .body_all .header_all .header-menu {
     line-height: 70px;
     height: 70px;
@@ -43,6 +54,17 @@
 .body_all .header_all .header-menu .menu li a {
     text-decoration: none;
     color: #fff;
+    transition: .4s ease;
+}
+
+.body_all .header_all .header-menu .menu li a:hover {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 15px;
+    min-height: 30px;
+    padding: 8px;
+    background-color: #fcbe35;
+    transition: .4s ease;
 }
 
 .body_all .header_all .header-search form {

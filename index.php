@@ -18,17 +18,24 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.0">
+    <link rel="stylesheet" href="styles.css?v=1.3">
     <link rel="stylesheet" href="bannerStyles.css">
+    <link rel="stylesheet" href="cartStyles.css?v=1.3">
 </head>
 <?php 
   include_once 'connectSQL.php';
   include_once 'dataLogo.php';
   include_once 'dataMenu.php';
   include_once 'dataBanner.php';
+  include_once 'dataCart.php';
   $getLogo = getLogo();
   $getMenu = getMenu();  
   $getBanner = getBanner();
+  $getCart = getCart();
+
+    // echo '<pre>';
+    // print_r($getCart);
+    // die();
   ?>
 
 <body>
@@ -39,11 +46,11 @@
                 <div class="header_all d-flex">
                     <div class="col-2 header-logo d-flex">
                         <img src="./img/logo.jpg" alt="logo">
-                        <h4><?php echo $getLogo[0]['title'] ?></h4>
+                        <h4><a href="#"><?php echo $getLogo[0]['title'] ?></a></h4>
                     </div>
                     <div class="col-4 header-menu">
                         <nav>
-                            <ul class="menu d-flex">
+                            <ul class="menu d-flex ">
                                 <?php 
                                             for($i = 0; $i < count($getMenu) ; $i++)
                                             {
@@ -81,11 +88,11 @@
                 <li data-target="#myCarousel" data-slide-to="3"></li>
             </ol>
             <!-- Wrapper for slides -->
-            <div class="carousel-inner khoa">
+            <div class="carousel-inner ">
             <?php 
                     for($i = 0; $i < count($getBanner) ; $i++) {
                       ?>
-                        <div class="item <?php if ($i == 0) { echo 'active'; } ?>">
+                        <div class="item <?php if ($i == 0) { echo 'active'; } ?>"style="height:600px">
                           <img src="img/<?php echo $getBanner[$i]['url_img'] ?>" class="banner_size" alt="banner1">
                           <div class="carousel-caption">
                           <h3><?php echo $getBanner[$i]['name'] ?></h3>
@@ -108,6 +115,32 @@
             </a>
         </div>
     </div>
+
+
+    <div class="container cart_cart" id="fromDescription">
+        <div class="row justify-content-center">
+            <?php 
+                    for ($i = 0 ; $i <count($getCart); $i++){
+                ?>
+                <div class="col-3 cach">
+                    <div class="card shadow" style="width: 25rem; height:400px">
+                        <div class="inner">
+                            <img class="card-img-top" src="./img/<?php echo $getCart[$i]['img'] ?>" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $getCart[$i]['name']?></h5>
+                            <p class="card-text"><a href="product-details.php">Product details</a></p>
+                            <span class="price_first"><?php echo $getCart[$i]['price_first']?>vnd</span>
+                            <span class="price_second"><?php echo $getCart[$i]['price_second']?>vnd</span>
+                        </div>
+                        <a href="#" class="btn btn-success">Add to card <span><i class="fas fa-shopping-cart"></i></span></a>
+                    </div>
+                </div>
+            <?php }?>
+        </div>
+    </div>
+
+    <!-- <script src="appCart.js"></script> -->
 </body>
 
 </html>
