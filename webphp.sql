@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 08:17 AM
+-- Generation Time: May 14, 2021 at 10:11 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -51,6 +51,17 @@ INSERT INTO `banner` (`id`, `name`, `url_img`, `description`, `rank`, `create_da
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart_products`
+--
+
+CREATE TABLE `cart_products` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `product_id` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logo`
 --
 
@@ -91,6 +102,36 @@ INSERT INTO `menu` (`id`, `name`, `rank`, `del`) VALUES
 (4, 'About us', '4', '0'),
 (5, 'Contact us', '5', '0');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_detail`
+--
+
+CREATE TABLE `product_detail` (
+  `id` int(6) NOT NULL,
+  `img` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `price_first` varchar(50) DEFAULT NULL,
+  `price_second` varchar(50) DEFAULT NULL,
+  `size` varchar(50) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product_detail`
+--
+
+INSERT INTO `product_detail` (`id`, `img`, `name`, `price_first`, `price_second`, `size`, `description`) VALUES
+(1, 'product1.jpg', 'Broccoli', '22.000', '18.000', 'Large', 'Trong các loại trái cây tốt cho sức khỏe thì dứa là một loại quả ngon ngọt rất giàu kali. Theo các nghiên cứu, kali trong chế độ ăn uống có tác dụng trung hòa lượng axit và do đó làm giảm sự mất canxi'),
+(2, 'product2.jpg', 'Carot', '22.000', '20.000', 'Large', 'Đu đủ chính là một loại quả ngọt, mềm làm cho mùa hè trở nên dễ chịu hơn. Thêm vào đó, trong đu đủ rất giàu vitamin C giúp làm nên điều kỳ diệu cho xương, da và khả năng miễn'),
+(3, 'product3.jpg', 'Susu', '20.000', '12.000', 'Medium', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe ratione quo, voluptate quidem mollitia, earum molestias error beatae tempore minus ea officia odit accusantium nihil? Suscipit, natus? D'),
+(4, 'product4.jpg', 'Tomato', '20.000', '18.000', 'Small', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe ratione quo, voluptate quidem mollitia, earum molestias error beatae tempore minus ea officia odit accusantium nihil? Suscipit, natus? D'),
+(5, 'product5.jpg', 'BeetRoot', '19.000', '12.000', 'Small', 'Trong các loại trái cây tốt cho sức khỏe thì dứa là một loại quả ngon ngọt rất giàu kali. Theo các nghiên cứu, kali trong chế độ ăn uống có tác dụng trung hòa lượng axit và do đó làm giảm sự mất canxi'),
+(6, 'product6.jpg', 'Corn', '22.000', '17.000', 'Large', 'Trong các loại trái cây tốt cho sức khỏe thì dứa là một loại quả ngon ngọt rất giàu kali. Theo các nghiên cứu, kali trong chế độ ăn uống có tác dụng trung hòa lượng axit và do đó làm giảm sự mất canxi'),
+(7, 'product7.jpg', 'Muraze', '16.000', '12.000', 'Medium', 'Trong các loại trái cây tốt cho sức khỏe thì dứa là một loại quả ngon ngọt rất giàu kali. Theo các nghiên cứu, kali trong chế độ ăn uống có tác dụng trung hòa lượng axit và do đó làm giảm sự mất canxi'),
+(8, 'product8.jpg', 'Lemon', '19.000', '17.000', 'Small', 'Trong các loại trái cây tốt cho sức khỏe thì dứa là một loại quả ngon ngọt rất giàu kali. Theo các nghiên cứu, kali trong chế độ ăn uống có tác dụng trung hòa lượng axit và do đó làm giảm sự mất canxi');
+
 --
 -- Indexes for dumped tables
 --
@@ -100,6 +141,13 @@ INSERT INTO `menu` (`id`, `name`, `rank`, `del`) VALUES
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_products`
+--
+ALTER TABLE `cart_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `logo`
@@ -114,6 +162,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_detail`
+--
+ALTER TABLE `product_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -121,6 +175,12 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cart_products`
+--
+ALTER TABLE `cart_products`
   MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -134,6 +194,22 @@ ALTER TABLE `logo`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `product_detail`
+--
+ALTER TABLE `product_detail`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart_products`
+--
+ALTER TABLE `cart_products`
+  ADD CONSTRAINT `cart_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product_detail` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
