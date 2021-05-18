@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 10:11 AM
+-- Generation Time: May 18, 2021 at 11:58 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -46,7 +46,8 @@ INSERT INTO `banner` (`id`, `name`, `url_img`, `description`, `rank`, `create_da
 (1, 'banner 1', 'banner1.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '1', '11-05', '11-05', '0'),
 (2, 'banner 2', 'banner2.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '2', '11-05', '11-05', '0'),
 (3, 'banner 3', 'banner3.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '3', '11-05', '11-05', '0'),
-(4, 'banner 4', 'banner4.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '4', '11-05', '11-05', '0');
+(4, 'banner 4', 'banner4.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum natus consequatur sed, totam alias er', '4', '11-05', '11-05', '0'),
+(5, 'Deal of the week', 'bannerDeal.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec nisi id erat consectetur tincid', '5', '11-05', '11-05', '0');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ ALTER TABLE `product_detail`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart_products`

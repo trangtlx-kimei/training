@@ -105,7 +105,56 @@ body {
     transition: 0.4s;
 }
 
+.body_all .header_all .header-icon span button {
+    border: none;
+    background: none;
+}
+
 .body_all .header_all .header-icon span:hover {
     color: #d2d17e;
     transition: 0.4s;
+}
+
+.bg_deal {
+    position: relative;
+}
+
+.bg_deal img {
+    width: 100%;
+}
+
+.bg_deal .content_deal h3 {
+    font-size: 50px;
+    font-weight: 700;
+    font-family: cursive;
+    color: #fff;
+    padding: 20px;
+}
+
+.bg_deal .content_deal p {
+    font-size: 20px;
+    color: #fff;
+    padding: 20px;
+}
+
+.content_deal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.days_deal h4 {
+    border: 5px solid #fff;
+    border-radius: 50%;
+    height: 200px;
+    line-height: 200px;
+    bottom: 0;
+    left: 0;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }

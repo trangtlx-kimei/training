@@ -12,13 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- <script type="text/javascript" src="jquery-3.5.1.min.js"></script> -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.3">
+    <link rel="stylesheet" href="styles.css?v=1.1">
     <link rel="stylesheet" href="bannerStyles.css">
     <link rel="stylesheet" href="cartStyles.css?v=1.3">
 </head>
@@ -31,10 +33,10 @@
   $getLogo = getLogo();
   $getMenu = getMenu();  
   $getBanner = getBanner();
-  $getCart = getCart();
+  $listProduct = listProduct();
 
     // echo '<pre>';
-    // print_r($getCart);
+    // print_r($getBanner);
     // die();
   ?>
 
@@ -78,7 +80,7 @@
         </div>
     </div>
     <!-- banner-->
-    <div class="container-fluid banner">
+    <div class="container-fluid banner" style="height:100%">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -87,13 +89,12 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
             </ol>
-            <!-- Wrapper for slides -->
             <div class="carousel-inner ">
             <?php 
                     for($i = 0; $i < count($getBanner) ; $i++) {
                       ?>
-                        <div class="item <?php if ($i == 0) { echo 'active'; } ?>"style="height:600px">
-                          <img src="img/<?php echo $getBanner[$i]['url_img'] ?>" class="banner_size" alt="banner1">
+                        <div class="item <?php if ($i == 0) { echo 'active'; } ?>"style="height:700px">
+                          <img src="img/<?php echo $getBanner[$i]['url_img'] ?>" class="banner_size" alt="banner">
                           <div class="carousel-caption">
                           <h3><?php echo $getBanner[$i]['name'] ?></h3>
                           <p><?php echo $getBanner[$i]['description']  ?><p>
@@ -116,22 +117,21 @@
         </div>
     </div>
 
-
-    <div class="container cart_cart" id="fromDescription">
+    <div class="container cart_cart">
         <div class="row justify-content-center">
             <?php 
-                    for ($i = 0 ; $i <count($getCart); $i++){
+                    for ($i = 0 ; $i <count($listProduct); $i++){
                 ?>
                 <div class="col-3 cach">
                     <div class="card shadow" style="width: 25rem; height:400px">
                         <div class="inner">
-                            <img class="card-img-top" src="./img/<?php echo $getCart[$i]['img'] ?>" alt="Card image cap">
+                            <img class="card-img-top" src="./img/<?php echo $listProduct[$i]['img'] ?>" alt="Card image cap">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $getCart[$i]['name']?></h5>
-                            <p class="card-text"><a href="product-details.php">Product details</a></p>
-                            <span class="price_first"><?php echo $getCart[$i]['price_first']?>vnd</span>
-                            <span class="price_second"><?php echo $getCart[$i]['price_second']?>vnd</span>
+                            <h5 class="card-title"><?php echo $listProduct[$i]['name']?></h5>
+                            <p class="card-text"><a href="product-details.php?id=<?php echo $listProduct[$i]['id'] ?>">Product details</a></p>
+                            <span class="price_first"><?php echo $listProduct[$i]['price_first']?>vnd</span>
+                            <span class="price_second"><?php echo $listProduct[$i]['price_second']?>vnd</span>
                         </div>
                         <a href="#" class="btn btn-success">Add to card <span><i class="fas fa-shopping-cart"></i></span></a>
                     </div>
@@ -140,7 +140,55 @@
         </div>
     </div>
 
-    <!-- <script src="appCart.js"></script> -->
+    <div class="container-fluid p-0 mt-5 ">
+         <div class="bg_deal">
+            <img src="img/<?php echo $getBanner[4]['url_img']?>" alt="banner sale">
+            <div class="container content_deal">
+                <div class="row">
+                    <div class="col-12">
+                        <h3><?php echo $getBanner[4]['name'] ?></h3>
+                        <p><?php echo $getBanner[4]['description']  ?><p>
+                    </div>
+                        <div class="col-3 days_deal">
+                            <h4>266 </h4>
+                        </div>
+                        <div class="col-3 days_deal">
+                            <h4>266 Days</h4>
+                        </div>
+                        <div class="col-3 days_deal">
+                            <h4>266 Days</h4>
+                        </div>
+                        <div class="col-3 days_deal">
+                            <h4>266 Days</h4>
+                        </div>
+                </div>
+            </div>
+         </div>
+    </div>
+
+     <div class="container cart_cart">
+        <div class="row justify-content-center">
+            <?php 
+                    for ($i = 0 ; $i <count($listProduct); $i++){
+                ?>
+                <div class="col-3 cach">
+                    <div class="card shadow" style="width: 25rem; height:400px">
+                        <div class="inner">
+                            <img class="card-img-top" src="./img/<?php echo $listProduct[$i]['img'] ?>" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $listProduct[$i]['name']?></h5>
+                            <p class="card-text"><a href="product-details.php?id=<?php echo $listProduct[$i]['id'] ?>">Product details</a></p>
+                            <span class="price_first"><?php echo $listProduct[$i]['price_first']?>vnd</span>
+                            <span class="price_second"><?php echo $listProduct[$i]['price_second']?>vnd</span>
+                        </div>
+                        <a href="#" class="btn btn-success">Add to card <span><i class="fas fa-shopping-cart"></i></span></a>
+                    </div>
+                </div>
+            <?php }?>
+        </div>
+    </div>
+
 </body>
 
 </html>

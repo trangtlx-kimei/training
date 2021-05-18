@@ -18,8 +18,8 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.1">
-    <link rel="stylesheet" href="products-detail.css?v=1.0">
+    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="products-detail.css?v=1.1">
 </head>
 <?php 
   include_once 'connectSQL.php';
@@ -27,11 +27,15 @@
   include_once 'dataMenu.php';
   include_once 'dataDetail.php';
 
+  $id = "";
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+    };
   $getLogo = getLogo();
   $getMenu = getMenu();  
-  $getDatail = getDatail();
+  $getDetail = getDetail($id);
 //   echo '<pre>';
-//   print_r($getCart);
+//   print_r($getDetail);
   ?>
 <body>
     <!-- header-->
@@ -78,26 +82,25 @@
     <div class="container product_detail">
             <div class="row">
                 <div class="col-6">
-                    <img src="./img/<?php echo $getDatail[0]['img'] ?>"alt="product-detail" style="width:500px">
+                    <img src="./img/<?php echo $getDetail[$id-1]['img'] ?>"alt="product-detail" style="width:500px">
                 </div>
                 <div class="col-6">
-                    <h2><?php echo $getDatail[0]['name']?></h2>
-                    <span class="price_first"><?php echo $getDatail[0]['price_first']?>vnd</span>
-                    <span class="price_second"><?php echo $getDatail[0]['price_second']?>vnd</span>
+                    <h2><?php echo $getDetail[$id-1]['name']?></h2>
+                    <span class="price_first"><?php echo $getDetail[$id-1]['price_first']?>vnd</span>
+                    <span class="price_second"><?php echo $getDetail[$id-1]['price_second']?>vnd</span>
                     <select>
                         <option>Select Size</option>
-                        <option><?php echo $getDatail[0]['size']?></option>
+                        <option><?php echo $getDetail[$id-1]['size']?></option>
                         <option>Medium</option>
                         <option>Small</option>
                     </select>
                     <input type="number" value="1">
                     <a href="#" class="add_to_cart">Add To Cart </a>
                     <h4>Product Detail</h4>
-                    <p><?php echo $getDatail[0]['description']?></p>
+                    <p><?php echo $getDetail[$id-1]['description']?></p>
                 </div>
             </div>
     </div>
-    <!-- <script src="appCart.js"></script> -->
 </body>
 
 </html>
