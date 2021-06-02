@@ -1,0 +1,9 @@
+.banner {
+    padding: 0;
+    height: 600px;
+    width: 100%;
+}
+
+.banner .banner_size {
+    width: 100%;
+}

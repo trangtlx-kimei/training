@@ -67,24 +67,70 @@ body {
     transition: .4s ease;
 }
 
-.body_all .header_all .header-search form {
-    display: flex;
+.body_all .header_all .header-search .search-box {
+    margin-top: 10px;
+    margin-left: 50px;
+    width: 280px;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
 }
 
-.body_all .header_all .header-search input {
+.body_all .header_all .header-search .search-box input[type="text"] {
     height: 40px;
-    width: 400px;
+    padding: 5px 10px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.body_all .header_all .header-search .result {
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+}
+
+.body_all .header_all .header-search .search-box input[type="text"],
+.result {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body_all .header_all .header-search .result p {
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #cccccc;
+    border-top: none;
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+.body_all .header_all .header-search .result p:hover {
+    background-color: #ffffff;
+}
+
+
+/* .body_all .header_all .header-search form {
+    display: flex;
+} */
+
+
+/* .body_all .header_all .header-search input {
+    height: 40px;
+    width: 280px;
     border-radius: 15px;
     margin-right: -100px;
-}
+} */
 
-.body_all .header_all .header-search button {
+
+/* .body_all .header_all .header-search button {
     height: 40px;
     border-radius: 15px;
     background-color: #3b5995;
     width: 100px;
     color: #fff;
-}
+}  */
 
 .body_all .header_all .header-icon {
     display: flex;
@@ -145,11 +191,20 @@ body {
     text-align: center;
 }
 
+.days_deal {
+    width: 100px;
+    position: relative;
+    padding: 80px;
+    margin: 0 -50px;
+}
+
 .days_deal h4 {
+    position: absolute;
+    width: 150px;
     border: 5px solid #fff;
     border-radius: 50%;
-    height: 200px;
-    line-height: 200px;
+    height: 150px;
+    line-height: 150px;
     bottom: 0;
     left: 0;
     font-size: 25px;
@@ -157,4 +212,18 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    margin-left: 245px;
+}
+
+.days_deal p {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    line-height: 190px;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    margin-left: 245px;
 }

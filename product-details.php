@@ -34,9 +34,10 @@
   $getLogo = getLogo();
   $getMenu = getMenu();  
   $getDetail = getDetail($id);
-//   echo '<pre>';
-//   print_r($getDetail);
-  ?>
+// echo '<pre>';
+//     print_r($getDetail);
+//     die();
+   ?>
 <body>
     <!-- header-->
     <div class="container-fluid">
@@ -82,12 +83,12 @@
     <div class="container product_detail">
             <div class="row">
                 <div class="col-6">
-                    <img src="./img/<?php echo $getDetail[$id-1]['img'] ?>"alt="product-detail" style="width:500px">
+                    <img src="./img/<?php echo $getDetail[$id-1]['anh_dai_dien'] ?>"alt="product-detail" style="width:500px">
                 </div>
                 <div class="col-6">
                     <h2><?php echo $getDetail[$id-1]['name']?></h2>
-                    <span class="price_first"><?php echo $getDetail[$id-1]['price_first']?>vnd</span>
-                    <span class="price_second"><?php echo $getDetail[$id-1]['price_second']?>vnd</span>
+                    <span class="price_first"><?php echo $getDetail[$id-1]['gia_ban']?>vnd</span>
+                    <span class="price_second"><?php echo $getDetail[$id-1]['gia_canh_tranh']?>vnd</span>
                     <select>
                         <option>Select Size</option>
                         <option><?php echo $getDetail[$id-1]['size']?></option>
@@ -97,7 +98,7 @@
                     <input type="number" value="1">
                     <a href="#" class="add_to_cart">Add To Cart </a>
                     <h4>Product Detail</h4>
-                    <p><?php echo $getDetail[$id-1]['description']?></p>
+                    <p><?php echo $getDetail[$id-1]['mo_ta_chi_tiet']?></p>
                 </div>
             </div>
     </div>
