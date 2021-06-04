@@ -1,0 +1,6 @@
+Em đã sửa bảng thiết kế data
+Edit code lại
+
+Reach sản phẩm:
+-Em chỉ mới làm tới bước search ra tên sản phẩm
+-Phần live search em còn bị lỗi
