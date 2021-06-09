@@ -35,6 +35,7 @@
   $getSlider = getSlider();
   $getSliderSale = getSliderSale();
   $listProduct = listProduct();
+//   $search = search();
     // echo '<pre>';
     // print_r($search);
     // die();
@@ -68,6 +69,7 @@
                         <form action="search_from.php" method="POST">
                             <div class="search-box">
                                 <input type="text" name="search" autocomplete="off" placeholder="find what you need..">
+                                <input type="submit">
                                 <div class="result"></div>
                             </div>
                         </form>
@@ -203,63 +205,42 @@
 
 
     <div class="container">
-                            <div class="row">
-                                  <div class="col-3"></div>          
-                                  <div class="col-6">
-                                        <input type="text" class="from-control" id ="search">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">size</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="output">
-                                                
-                                            </tbody>
-                                        </table>
-                                  </div>          
-                                  <div class="col-3"></div>          
-                            </div>
-                    </div>
-                    <script type="text/javascript">
-  $(document).ready(function(){
-    $("#search").keypress(function(){
-      $.ajax({
-        type:'POST',
-        url:'search.php',
-        data:{
-          name:$("#search").val(),
-        },
-        success:function(data){
-          $("#output").html(data);
-        }
-      });
-    });
-  });
-</script>
-    <script src ="./clock.js"></script>
-
-
-
-    <!-- <script>
-        $(document).ready(function() {
-            $('search-box input[type="text"]').on("keyup input", function() {
-                var inputVal = $(this).val();
-                var resultDropdown = $(this).siblings(".result");
-                if (inputVal.length) {
-                    $.get("backend_search.php", { term:inputVal }).done(function(data) {
-                        resultDropdown.html(data);
-                    });
-                } else {
-                    resultDropdown.empty("aaaa");
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="search">
+                <input type="submit">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>Name Product</th>
+                    </tr>
+                </thead>
+                <tbody id="output">
+                 
+                </tbody>
+                </table>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            $("#search").change(function(){
+            $.ajax({
+                type:'POST',
+                url:'search.php',
+                data:{
+                name:$("#search").val(),
+                },
+                success:function(data){
+                $("#output").html(data);
                 }
             });
-            $(document).on("click", ".result p", function() {
-                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-                $(this).parents(".result").empty;
-            })
-    })
-    </script> -->
+            });
+        });
+    </script>
+    <script src ="./clock.js"></script>
 </body>
 </html>
