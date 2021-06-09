@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.1">
     <link rel="stylesheet" href="sliderStyles.css">
     <link rel="stylesheet" href="cartStyles.css?v=1.3">
 </head>
@@ -63,15 +63,36 @@
                             </ul>
                         </nav>
                     </div>
-                    <!-- menu search from !-->
+                    <!-- menu search from ! -->
                     <div class="col-3 header-search">
-                    
-                        <form action="search_from.php" method="POST">
-                            <div class="search-box">
-                                <input type="text" name="search" autocomplete="off" placeholder="find what you need..">
-                                <input type="submit">
-                                <div class="result"></div>
-                            </div>
+                        <form>
+                        <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="search">
+                <input type="submit">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Giá thị trường</th>
+                    <th>Giá khuyến mãi</th>
+                    <th>Mô tả</th>
+                    <th>Màu</th>
+                    <th>Size</th>
+                    <th>Cân nặng</th>
+                    </tr>
+                </thead>
+                <tbody id="output">
+                 <!--search.php !-->
+                </tbody>
+                </table>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
                         </form>
                     </div>
                     <!-- menu search from !-->
@@ -204,26 +225,7 @@
     </div>
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="search">
-                <input type="submit">
-                <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th>Name Product</th>
-                    </tr>
-                </thead>
-                <tbody id="output">
-                 
-                </tbody>
-                </table>
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </div>
+    
     <script type="text/javascript">
         $(document).ready(function(){
             
