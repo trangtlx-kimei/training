@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 12:11 PM
+-- Generation Time: Jun 14, 2021 at 05:52 AM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ CREATE TABLE `chi_tiet_don_hang` (
   `san_pham_id` int(11) NOT NULL,
   `so_luong` int(11) NOT NULL,
   `don_gia` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `chi_tiet_don_hang`
@@ -64,14 +64,14 @@ CREATE TABLE `don_hang` (
   `id` int(11) NOT NULL,
   `ngay_dat` datetime NOT NULL,
   `tong_tien` double NOT NULL,
-  `ho_ten` varchar(60) NOT NULL,
-  `dien_thoai` varchar(20) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `dia_chi_giao_hang` varchar(200) NOT NULL,
-  `ghi_chu` varchar(500) DEFAULT NULL,
+  `ho_ten` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `dien_thoai` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dia_chi_giao_hang` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `ghi_chu` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ship` double NOT NULL,
   `thanh_tien` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `don_hang`
@@ -131,9 +131,9 @@ INSERT INTO `menu` (`id`, `name`, `rank`, `del`) VALUES
 
 CREATE TABLE `phan_loai` (
   `id` int(11) NOT NULL,
-  `name` varchar(60) NOT NULL COMMENT 'tem nhom san pham\n',
-  `code` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(60) COLLATE utf8_unicode_ci NOT NULL COMMENT 'tem nhom san pham\n',
+  `code` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `phan_loai`
@@ -152,7 +152,7 @@ CREATE TABLE `phan_loai_san_pham` (
   `id` int(11) NOT NULL,
   `phan_loai_id` int(11) NOT NULL,
   `san_pham_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -162,34 +162,35 @@ CREATE TABLE `phan_loai_san_pham` (
 
 CREATE TABLE `san_pham` (
   `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL COMMENT 'ten san pham',
-  `code` varchar(150) DEFAULT NULL,
-  `mo_ta ngan_gon` varchar(500) DEFAULT NULL,
-  `mo_ta_chi_tiet` text CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ten san pham',
+  `ma_san_pham` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mo_ta_ngan_gon` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mo_ta_chi_tiet` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `ban_chay` tinyint(4) NOT NULL DEFAULT 0,
   `noi_bat` tinyint(4) NOT NULL DEFAULT 0,
   `moi_ve` tinyint(4) NOT NULL DEFAULT 0,
   `gia_ban` double NOT NULL,
-  `gia_canh_tranh` varchar(45) NOT NULL,
-  `anh_dai_dien` varchar(100) NOT NULL DEFAULT 'no-image.jpg',
+  `gia_canh_tranh` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `anh_dai_dien` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no-image.jpg',
   `ngay_dang` datetime NOT NULL,
   `ngay_sua` datetime DEFAULT NULL,
   `thuong_hieu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `san_pham`
 --
 
-INSERT INTO `san_pham` (`id`, `name`, `code`, `mo_ta ngan_gon`, `mo_ta_chi_tiet`, `ban_chay`, `noi_bat`, `moi_ve`, `gia_ban`, `gia_canh_tranh`, `anh_dai_dien`, `ngay_dang`, `ngay_sua`, `thuong_hieu_id`) VALUES
-(1, 'Brocoli', NULL, 'trái Brocoli', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product1.jpg', '2021-06-01 04:24:58', '2021-06-01 04:24:58', 1),
-(2, 'Carot', NULL, 'C? Carot', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product2.jpg', '2021-06-01 09:34:17', '2021-06-01 09:34:17', 1),
-(3, 'Susu', NULL, 'C? Susu', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product3.jpg', '2021-06-01 09:34:17', '2021-06-01 09:34:17', 1),
-(4, 'Tomato', NULL, 'Trái Cà chua', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product4.jpg', '2021-06-01 09:37:40', '2021-06-01 09:37:40', 1),
-(5, 'BeeRoot', NULL, 'Trái BeeRoot', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product5.jpg', '2021-06-01 09:37:40', '2021-06-01 09:37:40', 1),
-(6, 'Corn', NULL, 'Trái B?p', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product6.jpg', '2021-06-01 09:39:08', '2021-06-01 09:39:08', 1),
-(7, 'Muraze', NULL, 'Trái Muraze', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product7.jpg', '2021-06-01 09:39:08', '2021-06-01 09:39:08', 1),
-(8, 'Lemon', NULL, 'Trái Chanh', 'B?n có bi?t b?n c?ng có th? gi?m cân b?ng cách ?n trái cây th??ng xuyên? Trái cây có hàm l??ng Natri th?p; do ?ó giúp gi?m thi?u nguy c? t?ng cân n??c c?a c? th?. N?u \" th?c ??n gi?m cân hàng ngày\" chia làm 3 b?a và có m?t b?a ch? toàn hoa qu? và rau c?, b?n s? th?y s? cân c?a b?n gi?m ?i nhanh chóng. ?ó là b?i vì khi b?n ?n nhi?u trái cây s? khuy?n khích c? th? ít tiêu th? các th?c ?n giàu kalo. H?n n?a, b?n có th? làm gi?m l??ng kalo trong c? th? khi ?n hóa qu? b?i có r?t nhi?u lo?i hoa qu? và rau c? không ch?a kalo và giúp c? th? ki?m soát vi?c t?ng cân không c?n thi?t.', 0, 0, 0, 22, '18.000', 'product8.jpg', '2021-06-01 09:40:59', '2021-06-01 09:40:59', 1);
+INSERT INTO `san_pham` (`id`, `name`, `ma_san_pham`, `code`, `mo_ta_ngan_gon`, `mo_ta_chi_tiet`, `ban_chay`, `noi_bat`, `moi_ve`, `gia_ban`, `gia_canh_tranh`, `anh_dai_dien`, `ngay_dang`, `ngay_sua`, `thuong_hieu_id`) VALUES
+(1, 'Brocoli', 'Br', NULL, 'trái Brocoli', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product1.jpg', '2021-06-01 04:24:58', '2021-06-01 04:24:58', 1),
+(2, 'Carot', 'Ca', NULL, 'củ Carot', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product2.jpg', '2021-06-01 09:34:17', '2021-06-01 09:34:17', 1),
+(3, 'Susu', 'Su', NULL, 'củ Susu', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product3.jpg', '2021-06-01 09:34:17', '2021-06-01 09:34:17', 1),
+(4, 'Tomato', 'To', NULL, 'Trái Cà chua', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product4.jpg', '2021-06-01 09:37:40', '2021-06-01 09:37:40', 1),
+(5, 'BeeRoot', 'Be', NULL, 'Trái BeeRoot', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product5.jpg', '2021-06-01 09:37:40', '2021-06-01 09:37:40', 1),
+(6, 'Corn', 'Co', NULL, 'Trái Bắp', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ', 0, 0, 0, 22, '18.000', 'product6.jpg', '2021-06-01 09:39:08', '2021-06-01 09:39:08', 1),
+(7, 'Muraze', 'Mu', NULL, 'Trái Muraze', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product7.jpg', '2021-06-01 09:39:08', '2021-06-01 09:39:08', 1),
+(8, 'Lemon', 'Le', NULL, 'Trái Chanh', 'Trong rau quả có chứa một nguồn vitamin và khoáng chất phong phú vô cùng cần thiết giúp cơ thể duy trì và phát triển khỏe mạnh. Các dưỡng chất trong rau quả có tác dụng tăng cường hệ miễn dịch để phòng chống lại một số bệnh tim mạch, huyết áp hay đột quỵ.', 0, 0, 0, 22, '18.000', 'product8.jpg', '2021-06-01 09:40:59', '2021-06-01 09:40:59', 1);
 
 -- --------------------------------------------------------
 
@@ -227,17 +228,24 @@ INSERT INTO `slider` (`id`, `title`, `url_img`, `description`, `rank`, `create_d
 
 CREATE TABLE `thuoc_tinh` (
   `id` int(11) NOT NULL,
-  `color` varchar(45) NOT NULL,
-  `size` varchar(45) NOT NULL,
-  `weight` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `color` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `size` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `weight` varchar(45) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `thuoc_tinh`
 --
 
 INSERT INTO `thuoc_tinh` (`id`, `color`, `size`, `weight`) VALUES
-(1, '', '', '');
+(1, 'Vàng', 'Large', '18g'),
+(2, 'Đỏ', 'Small', '5g'),
+(3, 'Hồng', 'Medium', '8g'),
+(4, 'Tím', 'Large', '12g'),
+(5, 'Vàng', 'Medium', '8g'),
+(6, 'Đỏ', 'Large', '18g'),
+(7, 'Vàng', 'Medium', '9g'),
+(8, 'Xanh', 'Large', '12g');
 
 -- --------------------------------------------------------
 
@@ -249,7 +257,21 @@ CREATE TABLE `thuoc_tinh_san_pham` (
   `id` int(11) NOT NULL,
   `san_pham_id` int(11) NOT NULL,
   `thuoc_tinh_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `thuoc_tinh_san_pham`
+--
+
+INSERT INTO `thuoc_tinh_san_pham` (`id`, `san_pham_id`, `thuoc_tinh_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -295,6 +317,27 @@ CREATE TABLE `tu_khoa_san_pham` (
   `tu_khoa_id` int(11) NOT NULL,
   `san_pham_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `userName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `repeatPassword` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `userName`, `password`, `repeatPassword`, `email`) VALUES
+(1, 'anhkhoa', 'khoa123', 'khoa123', 'trinhleanhkhoa1999@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -383,6 +426,12 @@ ALTER TABLE `tu_khoa_san_pham`
   ADD KEY `fk_tu_khoa_san_pham_san_pham1` (`san_pham_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -432,13 +481,13 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `thuoc_tinh`
 --
 ALTER TABLE `thuoc_tinh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `thuoc_tinh_san_pham`
 --
 ALTER TABLE `thuoc_tinh_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `thuong_hieu`
@@ -457,6 +506,12 @@ ALTER TABLE `tu_khoa`
 --
 ALTER TABLE `tu_khoa_san_pham`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

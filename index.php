@@ -66,33 +66,33 @@
                     <!-- menu search from ! -->
                     <div class="col-3 header-search">
                         <form>
-                        <div class="container">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="search">
-                <input type="submit">
-                <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Mã sản phẩm</th>
-                    <th>Giá thị trường</th>
-                    <th>Giá khuyến mãi</th>
-                    <th>Mô tả</th>
-                    <th>Màu</th>
-                    <th>Size</th>
-                    <th>Cân nặng</th>
-                    </tr>
-                </thead>
-                <tbody id="output">
-                 <!--search.php !-->
-                </tbody>
-                </table>
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="search">
+                                        <input type="submit">
+                                        <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Giá thị trường</th>
+                                            <th>Giá khuyến mãi</th>
+                                            <th>Mô tả</th>
+                                            <th>Màu</th>
+                                            <th>Size</th>
+                                            <th>Cân nặng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="output">
+                                        <!--search.php !-->
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <!-- menu search from !-->
@@ -102,6 +102,7 @@
                         <span><i class="fas fa-heart"></i></span>
                         <span><i class="fas fa-shopping-cart"></i></span>
                         <span><i class="fas fa-user"></i></span>
+                        <p class="card-text"><a href="logInFrom.php">Log-in</a></p>
                     </div>
                 </div>
             </div>
