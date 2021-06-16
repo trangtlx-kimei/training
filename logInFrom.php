@@ -18,7 +18,7 @@
             <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
             <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
             <div class="login-form">
-                <form method="POST" id="login_data">
+                <form method="POST" action="index.php" id="login_data">
                     <div class="sign-in-htm">
                         <div class="group">
                             <label for="user" class="label">Username</label>
@@ -118,7 +118,8 @@
 
             if(userLogin === ''|| passLogin === ''){
                 alert('khong duoc bo trong');
-            }else{
+             }
+             else{
                 $.ajax({
                     url:'login.php',
                     method:'POST',
