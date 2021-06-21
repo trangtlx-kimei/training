@@ -14,6 +14,11 @@
             include("modules/quanlydanhmucsanpham/lietke.php");
         }elseif($tam == 'quanlydanhmucsanpham' && $query == 'sua'){
             include("modules/quanlydanhmucsanpham/sua.php");
+        }elseif($tam == 'quanlyuser' && $query == 'them'){
+            include("modules/quanlyuser/them.php");
+            include("modules/quanlyuser/lietke.php");
+        }elseif($tam == 'quanlyuser' && $query == 'sua'){
+            include("modules/quanlyuser/sua.php");
         }else{
             include("modules/dashboard.php");
         }

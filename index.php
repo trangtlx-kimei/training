@@ -102,7 +102,7 @@
                         <span><i class="fas fa-heart"></i></span>
                         <span><i class="fas fa-shopping-cart"></i></span>
                         <span><i class="fas fa-user"></i></span>
-                        <p class="card-text"><a href="logInFrom.php">Log-in</a></p>
+                        <p class="card-text"><a href="./admin/login.php">Log-in</a></p>
                     </div>
                 </div>
             </div>
