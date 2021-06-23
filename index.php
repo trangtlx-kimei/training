@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.1">
     <link rel="stylesheet" href="sliderStyles.css">
     <link rel="stylesheet" href="cartStyles.css?v=1.3">
 </head>
@@ -35,6 +35,7 @@
   $getSlider = getSlider();
   $getSliderSale = getSliderSale();
   $listProduct = listProduct();
+//   $search = search();
     // echo '<pre>';
     // print_r($search);
     // die();
@@ -62,13 +63,35 @@
                             </ul>
                         </nav>
                     </div>
-                    <!-- menu search from !-->
+                    <!-- menu search from ! -->
                     <div class="col-3 header-search">
-                    
-                        <form action="search_from.php" method="POST">
-                            <div class="search-box">
-                                <input type="text" name="search" autocomplete="off" placeholder="find what you need..">
-                                <div class="result"></div>
+                        <form>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="search">
+                                        <input type="submit">
+                                        <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Giá thị trường</th>
+                                            <th>Giá khuyến mãi</th>
+                                            <th>Mô tả</th>
+                                            <th>Màu</th>
+                                            <th>Size</th>
+                                            <th>Cân nặng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="output">
+                                        <!--search.php !-->
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -79,6 +102,7 @@
                         <span><i class="fas fa-heart"></i></span>
                         <span><i class="fas fa-shopping-cart"></i></span>
                         <span><i class="fas fa-user"></i></span>
+                        <p class="card-text"><a href="./admin/login.php">Log-in</a></p>
                     </div>
                 </div>
             </div>
@@ -202,64 +226,24 @@
     </div>
 
 
-    <div class="container">
-                            <div class="row">
-                                  <div class="col-3"></div>          
-                                  <div class="col-6">
-                                        <input type="text" class="from-control" id ="search">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">size</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="output">
-                                                
-                                            </tbody>
-                                        </table>
-                                  </div>          
-                                  <div class="col-3"></div>          
-                            </div>
-                    </div>
-                    <script type="text/javascript">
-  $(document).ready(function(){
-    $("#search").keypress(function(){
-      $.ajax({
-        type:'POST',
-        url:'search.php',
-        data:{
-          name:$("#search").val(),
-        },
-        success:function(data){
-          $("#output").html(data);
-        }
-      });
-    });
-  });
-</script>
-    <script src ="./clock.js"></script>
-
-
-
-    <!-- <script>
-        $(document).ready(function() {
-            $('search-box input[type="text"]').on("keyup input", function() {
-                var inputVal = $(this).val();
-                var resultDropdown = $(this).siblings(".result");
-                if (inputVal.length) {
-                    $.get("backend_search.php", { term:inputVal }).done(function(data) {
-                        resultDropdown.html(data);
-                    });
-                } else {
-                    resultDropdown.empty("aaaa");
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            $("#search").change(function(){
+            $.ajax({
+                type:'POST',
+                url:'search.php',
+                data:{
+                name:$("#search").val(),
+                },
+                success:function(data){
+                $("#output").html(data);
                 }
             });
-            $(document).on("click", ".result p", function() {
-                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-                $(this).parents(".result").empty;
-            })
-    })
-    </script> -->
+            });
+        });
+    </script>
+    <script src ="./clock.js"></script>
 </body>
 </html>
