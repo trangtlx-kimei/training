@@ -47,23 +47,28 @@
     include ('../connectSQL.php'); 
     session_start();  
     class User {  
+        private $conn;
         function __construct() {  
-            $conn = connectSQL();
+            $this->conn = connectSQL();
         }  
         // destructor  
         function __destruct() {  
         }   
         public function Login($taikhoan, $password){  
-            $sql="SELECT * FROM tbl_admin WHERE username='".$taikhoan."' AND password='".$matkhau."' LIMIT 1";
-            $row=mysqli_query($mysqli,$sql);
-            $count =mysqli_num_rows($row);
-            if($count>0){
+            // $conn = connectSQL();
+            // echo $taikhoan;
+            $sql_dangnhap="SELECT * FROM tbl_admin WHERE username='".$taikhoan."' AND password='".$password."' LIMIT 1";
+            // $dangnhap = $this->conn->query($sql_dangnhap);
+            $result = $this->conn->query($sql_dangnhap);
+
+            if ($result->num_rows > 0) {
                 $_SESSION['dangnhap']==$taikhoan;
-                header("Location:index.php");
-            }else{
-                echo '<script>alert("tai khoan hoac mat khau khong dung");</script>';
-                header("Location:login.php");
+                // header("Location:index.php");
+                return true;
             }
+        
+            return false;
+             
         }
         public function Register($hovaten, $pass, $email,$diachi,$sdt){  
             $conn = connectSQL();
@@ -81,26 +86,39 @@
             //   echo "</table>";
             // } else {
             //   echo "0 output";
-            } 
+            // } 
            
+            }   
+        }   
     }   
-    } 
+
+    // function sum(a, b){
+    //     return a+ b;
+    // }
+
+    // $sum = sum(1, 2); 
+    // echo $sum;
+    // echo sum(1, 2);
+
     $funObj = new User();  
     if(isset($_POST['dangnhap'])){
+
         $taikhoan=$_POST['username'];
-        $matkhau=md5($_POST['password']);
-        $user = $funObj->Login($taikhoan, $password);  // cho này vẫn chưa ăn giá trị người dùng nhập vào em sẽ kt lại 
-        if (!$user) {  // em tạm thời để phủ định để giả sử trường hợp giá trị người dùng nhập đúng nó sẽ nhảy đến trang index 
-            // Registration Success  
-                header("Location:index.php");
+        $password=$_POST['password'];
+        $user = $funObj->Login($taikhoan, $password);  
+        
+        if ($user) {  
+        
+            header("Location:index.php");
+            // echo "<script>alert('Login success!')</script>";
+            echo 'thanh cong';   
+
         }else{
-                echo '<script>alert("tai khoan hoac mat khau khong dung");</script>';
+                //  echo "<script>alert('tai khoan / Password khong dung')</script>";  
                 header("Location:login.php");
+                echo 'that bai';
             }  
-        } else {  
-            // Registration Failed  
-            echo "<script>alert('tai khoan / Password khong dung')</script>";  
-        }  
+        }   
     if(isset($_POST['dangky'])){
         $hovaten = $_POST['hovaten'];
         $pass = $_POST['pass'];
